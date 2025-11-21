@@ -1,20 +1,17 @@
-# Détection automatique des fichiers tp1-exN.c
-SOURCES := $(wildcard ex*.c)
-EXOS := $(patsubst ex%.c,ex%,$(SOURCES))
+# Détection automatique des fichiers ex*.c et ex*-prep.c
+SOURCES := $(wildcard ex*.c)  # récupère tous les ex*.c
+EXOS := $(patsubst %.c,%,$(SOURCES))  # ex1.c -> ex1, ex1-prep.c -> ex1-prep
 
 CC = gcc
 CFLAGS = -Wall -Wextra -std=c11 -D_POSIX_C_SOURCE=200809L
-#-D_POSIX_C_SOURCE=200809L pour pas a avoir a le remettre a chaque fois
-
-
 
 # Règle par défaut : liste des exos disponibles
 all:
 	@echo "Exercices disponibles : $(EXOS)"
-	@echo "Utilisation : make ex<num> (ex : make ex3)"
+	@echo "Utilisation : make ex<num> (ex : make ex3) ou make ex<num>-prep"
 
-# Règle générique : make ex3 → compile tp1-ex3.c en tp1-ex3
-ex%: ex%.c
+# Règle générique : compile n'importe quel ex*.c ou ex*-prep.c
+%: %.c
 	$(CC) $(CFLAGS) $< -o $@
 
 # Nettoyage
