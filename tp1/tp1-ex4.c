@@ -66,7 +66,7 @@ int main (int argc, char * argv[]) {
     }
 
     struct sigaction s2;
-	s2.sa_handler= alarm_h;//pas sa handler car j'utiliser info et context
+	s2.sa_handler= mafonction;//pas sa handler car j'utiliser info et context
 	sigemptyset(&(s2.sa_mask));
 	sigaddset(&(s2.sa_mask), SIGALRM);
 	s2.sa_flags = SA_SIGINFO | SA_RESTART;
