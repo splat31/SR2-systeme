@@ -8,11 +8,7 @@ void mafonction (int s) {
 		printf("SIGUSR1 recu de %d\n",getpid());
 	}
 }
-int main (int argc, char* argv[]) {
-	if (argc!=1) {
-		fprintf(stderr,"Usage: ex1\n");
-		exit(1);
-	}
+int main () {
 	
 	struct sigaction s;
 	s.sa_handler= mafonction;

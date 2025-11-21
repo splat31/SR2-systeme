@@ -11,7 +11,7 @@ int main (int argc, char* argv[]) {
 	const char* fois = argv[2];
 	for (int i=0;i<atoi(fois);i++) {
 		pid_t p = getpid();
-		printf("Mon numero est %d, il est ...\n");
+		printf("Mon numero est %d, il est ...\n",p);
 		sleep(atoi(argv[1]));
 	}
 	return 0;

@@ -1,3 +1,5 @@
+#define _POSIX_C_SOURCE 200809L //pour utiliser signal obligatoire
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -31,11 +33,7 @@ void fils () {
 }
 
 
-int main (int argc, char* argv[]) {
-	if (argc!=1) {
-		fprintf(stderr,"Usage: ex1\n");
-		exit(1);
-	}
+int main () {
 	
 	ppere=getpid();
 	
