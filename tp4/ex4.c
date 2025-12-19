@@ -42,7 +42,7 @@ void* RDV(void* p){
     printf("Thread %d (%d) : J'arrive au point de RDV\n",paramrdv.id,(int)pthread_self());
     pthread_mutex_lock(&mutex);
     nbarrive++;
-    pthread_mutex_unlock(&mutex);
+    
     if (nbarrive == paramrdv.nbcopain) {
         printf("Thread %d (%d) : Je suis le dernier arrive au point de RDV\n",paramrdv.id,(int)pthread_self());
         for (int i = 0; i<paramrdv.nbcopain;i++) {
@@ -51,7 +51,7 @@ void* RDV(void* p){
     } else {
         printf("Thread %d (%d) : Je ne suis pas le dernier arrive au point de RDV\n",paramrdv.id,(int)pthread_self());
     }
-
+    pthread_mutex_unlock(&mutex);
     sem_wait(&semRDV);
 
     printf("Thread %d (%d) : Je continue un traitement parrallele avec les autres\n",paramrdv.id,(int)pthread_self());
